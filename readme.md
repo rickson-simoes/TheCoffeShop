@@ -1,13 +1,13 @@
 <h1 align="center">☕ The Coffe Shop</h1>
 
 [Vite-url]: https://vitejs.dev/
-[Vite-image]: https://img.shields.io/badge/Vite-646CFF?style=square&logo=Vite&logoColor=646CFF&labelColor=gray&label=^3.2.3
+[Vite-image]: https://img.shields.io/badge/Vite-646CFF?style=square&logo=Vite&logoColor=646CFF&labelColor=gray&label=^4.0.0
 
 [ReactJS-url]: https://ReactJS.org/
-[ReactJS-image]: https://img.shields.io/badge/React-blue?style=square&logo=React&logoColor=blue&labelColor=gray&label=^18.2.0
+[ReactJS-image]: https://img.shields.io/badge/React-blue?style=square&logo=React&logoColor=blue&labelColor=gray&label=^18.0.26
 
 [Typescript-url]: https://www.typescriptlang.org/
-[Typescript-image]: https://img.shields.io/badge/Typescript-blue?style=square&logo=typescript&logoColor=blue&labelColor=gray&label=~4.1.5
+[Typescript-image]: https://img.shields.io/badge/Typescript-blue?style=square&logo=typescript&logoColor=blue&labelColor=gray&label=^4.9.3
 
 <div align="center">
 
