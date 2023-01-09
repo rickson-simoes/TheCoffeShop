@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: ${props => props.theme['gray-100']};
-    color: ${props => props.theme['gray-700']}
+    color: ${props => props.theme['gray-700']};
+    -webkit-font-smoothing: antialiased;
   }
 
   body, input, button {
@@ -20,5 +21,10 @@ export const GlobalStyle = createGlobalStyle`
 
   h1,h2,h3,h4,h5,h6 {
     font-family: 'Baloo 2', cursive;
+  }
+
+  a {
+    text-decoration: none ;
+    color: ${props => props.theme['gray-700']};
   }
 `;
