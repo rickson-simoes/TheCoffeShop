@@ -6,4 +6,19 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box ;
   }
+
+  body {
+    background: ${props => props.theme['gray-100']};
+    color: ${props => props.theme['gray-700']}
+  }
+
+  body, input, button {
+    font-family: 'roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    font-family: 'Baloo 2', cursive;
+  }
 `;
