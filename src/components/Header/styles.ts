@@ -4,7 +4,8 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
+  margin-bottom: 3rem;
 `
 
 export const Content = styled.div`
