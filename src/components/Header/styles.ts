@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
 `
 
 export const Content = styled.div`
-  width: 51.25rem;
+  width: 70rem;
   display: flex;
   justify-content: space-between;
 

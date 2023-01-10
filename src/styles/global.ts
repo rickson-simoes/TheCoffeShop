@@ -24,14 +24,6 @@ export const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme['gray-900']}
   }
 
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
   a {
     text-decoration: none ;
     color: ${props => props.theme['gray-700']};
