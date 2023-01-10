@@ -1,6 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
 import MainImageCoffee from '../../assets/Home/main-image-coffee.svg'
-import { Content, Intro, ItemsInformation, Main, TitleInformation } from "./style";
+import { Content, Intro, ItemIcon, ItemsInformation, Main, TitleInformation } from "./style";
 
 export function Home() {
   return (
@@ -18,19 +18,27 @@ export function Home() {
 
             <ItemsInformation>
               <span>
-                <ShoppingCart weight="fill" />
+                <ItemIcon backgroundColor='yellowDark'>
+                  <ShoppingCart weight="fill" />
+                </ItemIcon>
                 Compra simples e segura
               </span>
               <span>
-                <Package weight="fill" />
+                <ItemIcon backgroundColor='darkGray'>
+                  <Package weight="fill" />
+                </ItemIcon>
                 Embalagem mantém o café intacto
               </span>
               <span>
-                <Timer weight="fill" />
+                <ItemIcon backgroundColor='yellow'>
+                  <Timer weight="fill" />
+                </ItemIcon>
                 Entrega rápida e rastreada
               </span>
               <span>
-                <Coffee weight="fill" />
+                <ItemIcon backgroundColor='purple'>
+                  <Coffee weight="fill" />
+                </ItemIcon>
                 O café chega fresquinho até você
               </span>
             </ItemsInformation>

@@ -11,9 +11,8 @@ export const Intro = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;  
-  box-shadow: inset 1px 1px 20px 10px ${props => props.theme["gray-100"]};
-  width: 100%;
-
+  box-shadow: inset 0px 1px 16px 15px ${props => props.theme["gray-100"]};
+  padding: 1rem 0;
   display: flex;
   justify-content: center;
 `
@@ -21,8 +20,7 @@ export const Intro = styled.div`
 export const Content = styled.div`
   display: flex;
   align-items: center;
-  height: 34rem;
-  width: 1120px;
+  width: 70rem;
   justify-content: space-between;
 
   section {
@@ -31,7 +29,6 @@ export const Content = styled.div`
     gap: 4.125rem;
 
     max-width: 36.75rem;
-    height: 342px;    
   }
 `
 
@@ -53,7 +50,33 @@ export const TitleInformation = styled.div`
 
 export const ItemsInformation = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-`
+  grid-template-columns: 1fr 55%;
+  gap: 1.25rem;
 
-// FAZER O BACKGROUND REDONDO DOS SVGS
+  span {
+    display: flex;
+    align-items: center;
+  }
+  
+`
+const BGColor = {
+  purple: 'purple',
+  yellowDark: 'yellowDark',
+  yellow: 'yellow',
+  darkGray: 'gray-700',
+} as const;
+
+interface IItemIcon {
+  backgroundColor: keyof typeof BGColor;
+}
+
+
+export const ItemIcon = styled.div<IItemIcon>`
+  background: ${props => props.theme[BGColor[props.backgroundColor]]};
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: white;
+  margin-right: 0.5rem;
+`
