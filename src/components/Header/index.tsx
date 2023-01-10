@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from 'react-router-dom'
-import { ActionBar, HeaderContainer, Content, NavItem } from './styles'
+import { ActionBar, HeaderContainer, Content, NavItem, Counter } from './styles'
 
 import CoffeDelivery from '../../assets/logo/coffe-delivery.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react';
@@ -25,7 +25,10 @@ export function Header() {
               <span>Porto Alegre, RS</span>
             </NavItem>
 
-            <NavItem href="#" background='yellowLight' svgColor='yellowDark'>
+            <NavItem href="/checkout" background='yellowLight' svgColor='yellowDark' fontColor='white'>
+              <Counter>
+                <span>3</span>
+              </Counter>
               <ShoppingCart weight="fill" size={22} />
             </NavItem>
           </ActionBar>

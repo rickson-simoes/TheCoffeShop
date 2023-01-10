@@ -11,6 +11,10 @@ export const Content = styled.div`
   width: 51.25rem;
   display: flex;
   justify-content: space-between;
+
+  img {
+    cursor: pointer;
+  }
 `;
 
 export const ActionBar = styled.nav`
@@ -24,6 +28,7 @@ const Colors = {
   purpleDark: 'purpleDark',
   yellowLight: 'yellowLight',
   yellowDark: 'yellowDark',
+  white: 'white'
 } as const
 
 interface NavItemProps {
@@ -47,5 +52,22 @@ export const NavItem = styled.a<NavItemProps>`
 
   span {
     font-size: 0.875rem;
+  }
+`
+
+export const Counter = styled.div`
+  position: absolute;
+  margin-bottom: 2.5rem;
+  margin-left: 1rem;
+
+  span {
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: ${props => props.theme.yellowDark} ;
+    border-radius: 50%;
+    width: 1.35rem;
+    height: 1.25rem;
+    font-size: 0.750rem;    
   }
 `
