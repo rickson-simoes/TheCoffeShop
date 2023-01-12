@@ -80,3 +80,76 @@ export const ItemIcon = styled.div<IItemIcon>`
   color: white;
   margin-right: 0.5rem;
 `
+
+
+export const CoffeeList = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3.375rem;
+    width: 70rem;
+
+    > h2 {
+      font-weight: 800;
+    }
+  }
+`
+
+export const List = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+`
+
+export const CoffeeType = styled.div`
+  background-color:${props => props.theme["gray-200"]};
+  border-radius: 6px 36px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  > img {
+    // 120 pelo tamanho da imagem, e 0.16 pela porcentagem da imagem que quero que fique de fora
+    // 120 tamanho * 0,16% 
+    margin-top: calc(0px - 120*0.16px);
+  }
+
+  > label {
+    background-color:${props => props.theme.yellowLight};
+    color:${props => props.theme.yellowDark};
+
+    text-transform: uppercase;
+    font-size: 0.625rem;
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6.25rem;
+  }
+`
+
+export const CoffeeDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0px 20px;
+
+
+  > h4 {
+    color: ${props => props.theme["gray-800"]};
+    font-size: 1.25rem;
+  }
+
+  > span {
+    color: ${props => props.theme["gray-600"]};
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+`
