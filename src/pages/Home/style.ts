@@ -153,3 +153,62 @@ export const CoffeeDescription = styled.div`
   }
 
 `
+
+export const CoffeePriceTagMenu = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+
+  label {
+    font-size: 1.5rem;
+    font-family: 'Baloo 2',cursive;
+    font-weight: 800;
+
+    &::before {
+      font-family: 'roboto', sans-serif;
+      content: "R$ ";
+      font-size: 0.875rem;
+      font-weight: 400;
+    }
+  }
+`
+
+export const ActionMenu = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  `
+
+
+export const Counter = styled.div`
+  background-color:${props => props.theme["gray-400"]};
+
+  display: flex;
+  gap: 10px;
+  border-radius: 6px;
+  padding: 0.5rem;
+
+  button {
+    color:${props => props.theme.purple};
+    background-color: transparent;
+    
+    border: 0;
+    line-height:0;
+    cursor: pointer;
+  }
+
+  span {
+    color:${props => props.theme["gray-900"]};
+  }
+`
+
+export const CartButton = styled.div`
+  background-color: ${props => props.theme.purpleDark};
+  color: ${props => props.theme.white};
+
+  border-radius: 6px;
+  padding: 8px;
+
+  line-height:0;
+`
