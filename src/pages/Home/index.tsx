@@ -1,6 +1,6 @@
 import { Coffee, Minus, Package, Plus, ShoppingCart, ShoppingCartSimple, Timer } from 'phosphor-react';
 import MainImageCoffee from '../../assets/Home/main-image-coffee.svg'
-import { ActionMenu, CartButton, CoffeeDescription, CoffeeList, CoffeePriceTagMenu, CoffeeType, Content, Counter, Intro, ItemIcon, ItemsInformation, List, Main, TitleInformation } from "./style";
+import { ActionMenu, CartButton, CoffeeDescription, CoffeeLabels, CoffeeList, CoffeePriceTagMenu, CoffeeType, Content, Counter, Intro, ItemIcon, ItemsInformation, List, Main, TitleInformation } from "./style";
 
 export function Home() {
   return (
@@ -56,7 +56,12 @@ export function Home() {
           <List>
             <CoffeeType>
               <img src="src\assets\CoffeTypeSvgs\Type=Expresso.svg" alt="" width={120} height={120} />
-              <label>tradicional</label>
+
+              <CoffeeLabels>
+                <label>tradicional</label>
+                <label>com leite</label>
+                <label>alcoolico</label>
+              </CoffeeLabels>
 
               <CoffeeDescription>
                 <h4>Expresso Tradicional</h4>

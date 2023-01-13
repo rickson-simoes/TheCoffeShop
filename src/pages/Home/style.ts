@@ -119,6 +119,13 @@ export const CoffeeType = styled.div`
     // 120 tamanho * 0,16% 
     margin-top: calc(0px - 120*0.16px);
   }
+`
+
+export const CoffeeLabels = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+  flex-wrap: wrap;
 
   > label {
     background-color:${props => props.theme.yellowLight};
@@ -129,6 +136,12 @@ export const CoffeeType = styled.div`
     font-weight: 700;
     padding: 0.25rem 0.5rem;
     border-radius: 6.25rem;
+    
+    transition: all 0.1s;
+    :hover {
+      background-color: ${props => props.theme.yellowDark};
+      color: white;
+    }
   }
 `
 
@@ -206,9 +219,12 @@ export const Counter = styled.div`
 export const CartButton = styled.div`
   background-color: ${props => props.theme.purpleDark};
   color: ${props => props.theme.white};
-
   border-radius: 6px;
   padding: 8px;
-
   line-height:0;
+  transition: all 0.1s;
+  
+  :hover {
+      background-color: ${props => props.theme.purple};
+    }
 `
