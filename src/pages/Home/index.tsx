@@ -1,6 +1,22 @@
-import { Coffee, Minus, Package, Plus, ShoppingCart, ShoppingCartSimple, Timer } from 'phosphor-react';
+import { Coffee, Package, ShoppingCart, ShoppingCartSimple, Timer } from 'phosphor-react';
 import MainImageCoffee from '../../assets/Home/main-image-coffee.svg'
-import { ActionMenu, CartButton, CoffeeDescription, CoffeeLabels, CoffeeList, CoffeePriceTagMenu, CoffeeType, Content, Counter, Intro, ItemIcon, ItemsInformation, List, Main, TitleInformation } from "./style";
+import { Counter } from '../../components/Counter';
+import {
+  ActionMenu,
+  CartButton,
+  CoffeeDescription,
+  CoffeeLabels,
+  CoffeeList,
+  CoffeePriceTagMenu,
+  CoffeeType,
+  Content,
+  Intro,
+  ItemIcon,
+  ItemsInformation,
+  List,
+  Main,
+  TitleInformation
+} from "./styles";
 
 export function Home() {
   return (
@@ -72,11 +88,7 @@ export function Home() {
                 <label>9,90</label>
 
                 <ActionMenu>
-                  <Counter>
-                    <button type='button'> <Minus weight="bold" /> </button>
-                    <span> 1 </span>
-                    <button type='button'> <Plus weight="bold" /> </button>
-                  </Counter>
+                  <Counter />
 
                   <CartButton>
                     <ShoppingCartSimple weight="fill" />
