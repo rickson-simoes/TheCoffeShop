@@ -4,7 +4,7 @@ export const CounterField = styled.div`
   background-color:${props => props.theme["gray-400"]};
 
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   border-radius: 6px;
   padding: 0.5rem;
 

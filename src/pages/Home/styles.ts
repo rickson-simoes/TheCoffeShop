@@ -151,7 +151,7 @@ export const CoffeeDescription = styled.div`
   align-items: center;
   gap: 0.5rem;
 
-  padding: 0px 20px;
+  padding: 0px 1.25rem;
 
 
   > h4 {
@@ -197,7 +197,7 @@ export const CartButton = styled.div`
   background-color: ${props => props.theme.purpleDark};
   color: ${props => props.theme.white};
   border-radius: 6px;
-  padding: 8px;
+  padding: 0.5rem;
   line-height:0;
   transition: all 0.1s;
   
