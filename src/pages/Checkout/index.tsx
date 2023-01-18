@@ -1,5 +1,7 @@
 import { CurrencyDollar, MapPinLine } from "phosphor-react";
-import { AddressInformations, Address, AdressDeliveryText, AdressInformationText, FormContainer, OrderContainer, Payment, AddressInputs, OptionalInput, InputRowCustomOne, InputRowCustomTwo, CustomInput } from "./styles";
+import { Inputs } from "./Components/Inputs";
+import { SvgTitleInformation } from "./Components/SvgTitleInformation";
+import { Address, FormContainer, OrderContainer, Payment } from "./styles";
 
 export function CheckoutPage() {
   return (
@@ -9,60 +11,25 @@ export function CheckoutPage() {
 
         <OrderContainer>
           <Address>
-            <AddressInformations>
-              <MapPinLine size={24} />
+            <SvgTitleInformation
+              title="Endereço de entrega"
+              informative="Informe o endereço onde deseja receber seu pedido"
+              svg={<MapPinLine size={24} />}
+              svgColor="yellowDark"
+            />
 
-              <AdressDeliveryText>
-                Endereço de Entrega
-              </AdressDeliveryText>
-
-              <span></span>
-
-              <AdressInformationText>
-                Informe o endereço onde deseja receber seu pedido
-              </AdressInformationText>
-            </AddressInformations>
-
-            <AddressInputs>
-              <div>
-                <CustomInput type="text" placeholder="CEP" />
-              </div>
-
-              <CustomInput type="text" placeholder="Rua" />
-
-              <InputRowCustomOne>
-                <CustomInput type="text" placeholder="Número" />
-
-                <OptionalInput>
-                  <CustomInput type="text" placeholder="Complemento" />
-                  <span>Opcional</span>
-                </OptionalInput>
-              </InputRowCustomOne>
-
-              <InputRowCustomTwo>
-                <CustomInput type="text" placeholder="Bairro" />
-                <CustomInput type="text" placeholder="Cidade" />
-                <CustomInput type="text" placeholder="UF" />
-              </InputRowCustomTwo>
-            </AddressInputs>
+            <Inputs />
           </Address>
         </OrderContainer>
 
         <OrderContainer>
           <Payment>
-            <AddressInformations>
-              <CurrencyDollar size={24} />
-
-              <AdressDeliveryText>
-                Pagamento
-              </AdressDeliveryText>
-
-              <span></span>
-
-              <AdressInformationText>
-                O pagamento é feito na entrega. Escolha a forma que deseja pagar
-              </AdressInformationText>
-            </AddressInformations>
+            <SvgTitleInformation
+              title="Pagamento"
+              informative="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
+              svg={<CurrencyDollar size={24} />}
+              svgColor="purple"
+            />
           </Payment>
         </OrderContainer>
       </section>
