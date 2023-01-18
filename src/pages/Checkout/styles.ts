@@ -80,9 +80,18 @@ export const OptionalInput = styled.div`
   grid-template-columns: 1fr min-content;
   flex: 1;
   align-items: center;
+  border-radius: 6px;
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px ${props => props.theme.yellow};
+  }
 
   input {
     border: none;
+    
+    &:focus {
+      box-shadow: 0 0 0 0px;
+    }
   }
 
   span {
