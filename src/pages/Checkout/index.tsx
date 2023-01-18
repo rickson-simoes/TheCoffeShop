@@ -1,7 +1,8 @@
 import { CurrencyDollar, MapPinLine } from "phosphor-react";
 import { Inputs } from "./Components/Inputs";
+import { RadioOptions } from "./Components/RadioOptions";
 import { SvgTitleInformation } from "./Components/SvgTitleInformation";
-import { Address, FormContainer, OrderContainer, Payment } from "./styles";
+import { Address, FormContainer, OrderContainer, Payment, PaymentOptions } from "./styles";
 
 export function CheckoutPage() {
   return (
@@ -30,6 +31,10 @@ export function CheckoutPage() {
               svg={<CurrencyDollar size={24} />}
               svgColor="purple"
             />
+
+            <PaymentOptions>
+              <RadioOptions />
+            </PaymentOptions>
           </Payment>
         </OrderContainer>
       </section>

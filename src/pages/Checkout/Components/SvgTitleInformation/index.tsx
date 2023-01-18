@@ -1,14 +1,13 @@
 import { Container, AdressDeliveryText, AdressInformationText, ThemeColors } from "./styles";
 
-
-interface IAddressInformation {
+interface ISvgTitleInformation {
   svg: JSX.Element;
   title: string;
   informative: string;
   svgColor: keyof typeof ThemeColors;
 }
 
-export function SvgTitleInformation({ informative, svg, title, svgColor }: IAddressInformation) {
+export function SvgTitleInformation({ informative, svg, title, svgColor }: ISvgTitleInformation) {
   return (
     <Container color={svgColor}>
       {svg}

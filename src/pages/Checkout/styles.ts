@@ -28,5 +28,12 @@ export const Address = styled.div`
 `
 
 export const Payment = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`
 
+export const PaymentOptions = styled.div`
+  display: flex;
+  gap: 1rem;
 `
