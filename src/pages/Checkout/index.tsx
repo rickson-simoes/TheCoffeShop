@@ -4,7 +4,7 @@ import { Counter } from "../../components/Counter";
 import { Inputs } from "./Components/Inputs";
 import { PaymentOptions } from "./Components/PaymentOptions";
 import { SvgTitleInformation } from "./Components/SvgTitleInformation";
-import { FormContainer, List, OrderCheckout, OrderContainer } from "./styles";
+import { ButtonRemoval, FormContainer, ItemInformation, ItemMenu, List, OrderCheckout, OrderContainer } from "./styles";
 
 export function CheckoutPage() {
   return (
@@ -41,12 +41,17 @@ export function CheckoutPage() {
         <OrderCheckout>
           <List>
             <li>
-              <img src="src\assets\CoffeTypeSvgs\Type=Expresso.svg" alt="" width={64} height={64} />
+              <ItemMenu>
+                <img src="src\assets\CoffeTypeSvgs\Type=Expresso.svg" alt="" width={64} height={64} />
 
-              <div>
-                <span>Expresso Tradicional</span>
-                <div> <Counter /> <button type="button"><Trash /> Remover</button> </div>
-              </div>
+                <ItemInformation>
+                  <span>Expresso Tradicional</span>
+                  <div>
+                    <Counter />
+                    <ButtonRemoval type="button"><Trash /> <span>Remover</span></ButtonRemoval>
+                  </div>
+                </ItemInformation>
+              </ItemMenu>
 
               <span>R$ 9,90</span>
             </li>

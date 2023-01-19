@@ -44,7 +44,69 @@ export const List = styled.ul`
 
   li {
     display: flex;
-    padding-bottom: 1rem;
+    justify-content: space-between;
+
+    padding: 1rem 0 2rem;
     border-bottom: 1px solid ${props => props.theme["gray-400"]};
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    > span {
+      font-weight: 700;
+    }
   }
+`
+
+export const ItemMenu = styled.div`
+ display: flex;
+  align-items: center;
+  gap: 1.25rem;
+`
+
+export const ItemInformation = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  > div {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  > span {
+    color: ${props => props.theme["gray-800"]}
+  }
+`
+
+export const ButtonRemoval = styled.button`
+    background-color:${props => props.theme["gray-400"]};
+    transition: all 0.1s;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.325rem;
+
+    border-radius: 6px;
+    padding: 0.5rem;
+    border: 0;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color:${props => props.theme["gray-500"]};
+    }
+
+    > svg {
+      color: ${props => props.theme.purple}
+    }
+
+    > span {
+      font-size: 0.75rem;
+      color: ${props => props.theme["gray-700"]};
+      text-transform: uppercase;
+    }
 `
