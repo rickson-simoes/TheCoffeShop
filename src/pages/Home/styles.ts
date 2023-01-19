@@ -99,15 +99,16 @@ export const CoffeeList = styled.div`
   }
 `
 
-export const List = styled.div`
+export const List = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 `
 
-export const CoffeeType = styled.div`
+export const CoffeeType = styled.li`
   background-color:${props => props.theme["gray-200"]};
   border-radius: 6px 36px;
+  list-style: none;
 
   display: flex;
   flex-direction: column;
