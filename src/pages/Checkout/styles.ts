@@ -10,7 +10,7 @@ export const FormContainer = styled.form`
   > section {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 `
 
@@ -19,21 +19,32 @@ export const OrderContainer = styled.div`
   border-radius: 6px;
   padding: 2.5rem;
   max-width: 40rem;
-`
-
-export const Address = styled.div`
+  
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2rem;  
 `
 
-export const Payment = styled.div`
+export const OrderCheckout = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-`
+  gap: 1.5rem;
 
-export const PaymentOptions = styled.div`
+  padding: 2rem;
+  border-radius: 0.375rem 2.75rem; 
+
+  background-color: ${props => props.theme["gray-200"]};
+`
+export const List = styled.ul`
+  list-style: none;
+
   display: flex;
+  flex-direction: column;
   gap: 1rem;
+
+  li {
+    display: flex;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid ${props => props.theme["gray-400"]};
+  }
 `

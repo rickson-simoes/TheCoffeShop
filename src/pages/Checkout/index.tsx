@@ -1,8 +1,10 @@
-import { CurrencyDollar, MapPinLine } from "phosphor-react";
+import { CurrencyDollar, MapPinLine, Trash } from "phosphor-react";
+
+import { Counter } from "../../components/Counter";
 import { Inputs } from "./Components/Inputs";
-import { RadioOptions } from "./Components/RadioOptions";
+import { PaymentOptions } from "./Components/PaymentOptions";
 import { SvgTitleInformation } from "./Components/SvgTitleInformation";
-import { Address, FormContainer, OrderContainer, Payment, PaymentOptions } from "./styles";
+import { FormContainer, List, OrderCheckout, OrderContainer } from "./styles";
 
 export function CheckoutPage() {
   return (
@@ -11,42 +13,53 @@ export function CheckoutPage() {
         <h4>Complete seu pedido</h4>
 
         <OrderContainer>
-          <Address>
-            <SvgTitleInformation
-              title="Endereço de entrega"
-              informative="Informe o endereço onde deseja receber seu pedido"
-              svg={<MapPinLine size={24} />}
-              svgColor="yellowDark"
-            />
+          <SvgTitleInformation
+            title="Endereço de entrega"
+            informative="Informe o endereço onde deseja receber seu pedido"
+            svg={<MapPinLine size={24} />}
+            svgColor="yellowDark"
+          />
 
-            <Inputs />
-          </Address>
+          <Inputs />
         </OrderContainer>
 
         <OrderContainer>
-          <Payment>
-            <SvgTitleInformation
-              title="Pagamento"
-              informative="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
-              svg={<CurrencyDollar size={24} />}
-              svgColor="purple"
-            />
+          <SvgTitleInformation
+            title="Pagamento"
+            informative="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
+            svg={<CurrencyDollar size={24} />}
+            svgColor="purple"
+          />
 
-            <PaymentOptions>
-              <RadioOptions />
-            </PaymentOptions>
-          </Payment>
+          <PaymentOptions />
         </OrderContainer>
       </section>
 
       <section>
         <h4>Cafés selecionados</h4>
 
-        <div>
-          sdfasdfsdafads
-        </div>
+        <OrderCheckout>
+          <List>
+            <li>
+              <img src="src\assets\CoffeTypeSvgs\Type=Expresso.svg" alt="" width={64} height={64} />
 
-        <button type="submit">hum</button>
+              <div>
+                <span>Expresso Tradicional</span>
+                <div> <Counter /> <button type="button"><Trash /> Remover</button> </div>
+              </div>
+
+              <span>R$ 9,90</span>
+            </li>
+          </List>
+
+          <div>
+            <div><span>Total de itens</span> <span>R$ 29.70</span></div>
+            <div><span>Entrega</span> <span>R$ 3.50</span></div>
+            <div><span>Total</span> <span>R$ 33.20</span></div>
+          </div>
+
+          <button type="submit">Confirmar Pedido</button>
+        </OrderCheckout>
       </section>
     </FormContainer>
   )
