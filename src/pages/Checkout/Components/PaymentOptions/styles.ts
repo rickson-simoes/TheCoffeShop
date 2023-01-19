@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+
+export const PaymentContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+
 interface ILabelPayment {
   checked: boolean;
 }

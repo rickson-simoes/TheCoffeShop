@@ -1,8 +1,8 @@
 import { Bank, CreditCard, Money } from "phosphor-react";
 import { ChangeEvent, useState } from "react";
-import { LabelPayment } from "./styles";
+import { LabelPayment, PaymentContainer } from "./styles";
 
-export function RadioOptions() {
+export function PaymentOptions() {
   const [option, setOption] = useState("");
 
   function handleOptionPayment(event: ChangeEvent<HTMLInputElement>) {
@@ -10,7 +10,7 @@ export function RadioOptions() {
   }
 
   return (
-    <>
+    <PaymentContainer>
       <LabelPayment checked={option == "credito"}>
         <input
           type="radio"
@@ -46,6 +46,6 @@ export function RadioOptions() {
 
         <Money size={16} /> Dinheiro
       </LabelPayment>
-    </>
+    </PaymentContainer>
   )
 }
