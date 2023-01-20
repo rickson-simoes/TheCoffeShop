@@ -12,6 +12,16 @@ export const FormContainer = styled.form`
     flex-direction: column;
     gap: 1rem;
   }
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
+    max-width: 40rem;
+  
+    > section {
+      width: 100%;
+    }
+
+  }
 `
 
 export const OrderContainer = styled.div`
