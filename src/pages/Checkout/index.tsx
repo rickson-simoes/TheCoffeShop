@@ -4,7 +4,7 @@ import { Counter } from "../../components/Counter";
 import { Inputs } from "./Components/Inputs";
 import { PaymentOptions } from "./Components/PaymentOptions";
 import { SvgTitleInformation } from "./Components/SvgTitleInformation";
-import { ButtonRemoval, FormContainer, ItemInformation, ItemMenu, List, OrderCheckout, OrderContainer } from "./styles";
+import { ButtonCheckoutOrder, ButtonRemoval, FormContainer, ItemInformation, ItemMenu, List, OrderCheckout, OrderContainer, TotalFontSizeBigger, TotalOrder } from "./styles";
 
 export function CheckoutPage() {
   return (
@@ -57,13 +57,21 @@ export function CheckoutPage() {
             </li>
           </List>
 
-          <div>
-            <div><span>Total de itens</span> <span>R$ 29.70</span></div>
-            <div><span>Entrega</span> <span>R$ 3.50</span></div>
-            <div><span>Total</span> <span>R$ 33.20</span></div>
-          </div>
+          <TotalOrder>
+            <div>
+              <span>Total de itens</span> <span>R$ 29,70</span>
+            </div>
 
-          <button type="submit">Confirmar Pedido</button>
+            <div>
+              <span>Entrega</span> <span>R$ 3,50</span>
+            </div>
+
+            <div>
+              <TotalFontSizeBigger>Total</TotalFontSizeBigger> <TotalFontSizeBigger>R$ 33,20</TotalFontSizeBigger>
+            </div>
+          </TotalOrder>
+
+          <ButtonCheckoutOrder type="submit"><strong>Confirmar Pedido</strong></ButtonCheckoutOrder>
         </OrderCheckout>
       </section>
     </FormContainer>

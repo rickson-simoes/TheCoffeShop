@@ -110,3 +110,34 @@ export const ButtonRemoval = styled.button`
       text-transform: uppercase;
     }
 `
+
+export const TotalOrder = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
+`
+
+export const TotalFontSizeBigger = styled.span`
+  font-size: 1.25rem;
+  font-weight: 700;
+`
+
+export const ButtonCheckoutOrder = styled.button`
+  background-color: ${props => props.theme.yellow};
+  color: ${props => props.theme.white};
+
+  cursor: pointer;
+  padding: 1rem;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 6px;
+
+  :hover {
+    opacity: 0.8;
+  }
+`
