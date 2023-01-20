@@ -28,4 +28,10 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none ;
     color: ${props => props.theme['gray-700']};
   }
+
+  @media (max-width: 1100px) {
+    html {
+      font-size: 90%;
+    }
+  }
 `;
