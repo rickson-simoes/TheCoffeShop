@@ -15,6 +15,7 @@ import {
   ItemsInformation,
   List,
   Main,
+  SectionContent,
   TitleInformation
 } from "./styles";
 
@@ -23,7 +24,7 @@ export function Home() {
     <Main>
       <Intro>
         <Content>
-          <section>
+          <SectionContent>
             <TitleInformation>
               <h1>Encontre o café perfeito para qualquer hora do dia</h1>
 
@@ -50,11 +51,11 @@ export function Home() {
                 O café chega fresquinho até você
               </span>
             </ItemsInformation>
-          </section>
+          </SectionContent>
 
-          <section>
+          <SectionContent>
             <img src={MainImageCoffee} alt="Imagem de um copo com a logo CoffeeDelivery" width='476' height='360' />
-          </section>
+          </SectionContent>
         </Content>
       </Intro>
 

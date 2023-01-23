@@ -22,14 +22,14 @@ export const Content = styled.div`
   align-items: center;
   width: 70rem;
   justify-content: space-between;
+`
 
-  section {
-    display: flex;
-    flex-direction: column;
-    gap: 4.125rem;
+export const SectionContent = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 4.125rem;
 
-    max-width: 36.75rem;
-  }
+  max-width: 36.75rem;
 `
 
 export const TitleInformation = styled.div`
@@ -63,7 +63,7 @@ export const ItemsInformation = styled.div`
 export const CoffeeList = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 4rem;
+  margin: 2rem;
 
   > div {
     display: flex;
@@ -81,6 +81,10 @@ export const List = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+
+  @media (max-width:1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  } 
 `
 
 export const CoffeeType = styled.li`
