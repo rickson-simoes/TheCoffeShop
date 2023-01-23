@@ -56,6 +56,7 @@ export const ItemsInformation = styled.div`
   span {
     display: flex;
     align-items: center;
+    gap: 0.4rem;
   }
   
 `
@@ -176,7 +177,7 @@ export const ActionMenu = styled.div`
     gap: 0.5rem;
   `
 
-export const CartButton = styled.div`
+export const CartButton = styled.a`
   background-color: ${props => props.theme.purpleDark};
   color: ${props => props.theme.white};
   border-radius: 6px;

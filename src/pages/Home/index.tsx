@@ -1,7 +1,7 @@
 import { Coffee, Package, ShoppingCart, ShoppingCartSimple, Timer } from 'phosphor-react';
 import MainImageCoffee from '../../assets/Home/main-image-coffee.svg'
 import { Counter } from '../../components/Counter';
-import { IconRounded } from '../../components/IIconRounded';
+import { IconRounded } from '../../components/IconRounded';
 import {
   ActionMenu,
   CartButton,
@@ -83,7 +83,7 @@ export function Home() {
                 <ActionMenu>
                   <Counter />
 
-                  <CartButton>
+                  <CartButton href='/checkout'>
                     <ShoppingCartSimple weight="fill" />
                   </CartButton>
                 </ActionMenu>
