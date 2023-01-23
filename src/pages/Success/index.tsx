@@ -1,43 +1,46 @@
-import { Container, LinearGradientContainer, OrderInformation, SectionOrderReceived } from "./styles";
+import { Container, InformationContent, LinearGradientContainer, OrderInformation, OrderReceived, OrderTitle } from "./styles";
+
 import ManBikeRiding from '../../assets/PedidoConfirmado/Ilustracao-homem-moto.svg'
+import { IconRounded } from '../../components/IconRounded';
+import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 
 export function SuccessPage() {
   return (
     <Container>
-      <SectionOrderReceived>
-        <div>
+      <OrderReceived>
+        <OrderTitle>
           <h1>Uhu! Pedido confirmado</h1>
           <span>Agora é só aguardar que logo o café chagará até você</span>
-        </div>
+        </OrderTitle>
 
         <LinearGradientContainer>
           <OrderInformation>
             <div>
-              svg
-              <div>
+              <IconRounded backgroundColor="purple" svg={<MapPin weight="fill" />} />
+              <InformationContent>
                 <span> Entrega em <strong>Rua João Daniel Martinelli, 102</strong></span>
                 <span> Farrapos - Porto Alegre, RS</span>
-              </div>
+              </InformationContent>
             </div>
 
             <div>
-              svg
-              <div>
+              <IconRounded backgroundColor="yellow" svg={<Timer weight="fill" />} />
+              <InformationContent>
                 <span> Previsão de entrega</span>
                 <span> <strong> 20 min - 30 min </strong></span>
-              </div>
+              </InformationContent>
             </div>
 
             <div>
-              svg
-              <div>
+              <IconRounded backgroundColor="yellowDark" svg={<CurrencyDollar weight="fill" />} />
+              <InformationContent>
                 <span> Pagamento na entrega </span>
                 <span> <strong>Cartão de crédito</strong></span>
-              </div>
+              </InformationContent>
             </div>
           </OrderInformation>
         </LinearGradientContainer>
-      </SectionOrderReceived>
+      </OrderReceived>
 
       <section>
         <img src={ManBikeRiding} alt="Man riding a bike with a package in his back" />
