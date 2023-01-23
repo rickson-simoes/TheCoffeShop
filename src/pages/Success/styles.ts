@@ -7,6 +7,14 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+
+  @media (max-width:1100px){
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
 `
 
 export const OrderReceived = styled.section`
