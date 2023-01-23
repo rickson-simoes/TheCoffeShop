@@ -50,7 +50,7 @@ export const TitleInformation = styled.div`
 
 export const ItemsInformation = styled.div`
   display: grid;
-  grid-template-columns: 1fr 55%;
+  grid-template-columns: 1fr 1.5fr;
   gap: 1.25rem;
 
   span {
@@ -59,28 +59,6 @@ export const ItemsInformation = styled.div`
   }
   
 `
-const BGColor = {
-  purple: 'purple',
-  yellowDark: 'yellowDark',
-  yellow: 'yellow',
-  darkGray: 'gray-700',
-} as const;
-
-interface IItemIcon {
-  backgroundColor: keyof typeof BGColor;
-}
-
-
-export const ItemIcon = styled.div<IItemIcon>`
-  background: ${props => props.theme[BGColor[props.backgroundColor]]};
-  width: 2rem;
-  height: 2rem;
-  padding: 0.5rem;
-  border-radius: 50%;
-  color: white;
-  margin-right: 0.5rem;
-`
-
 
 export const CoffeeList = styled.div`
   display: flex;
