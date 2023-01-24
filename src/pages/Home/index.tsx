@@ -1,5 +1,6 @@
 import { ShoppingCartSimple } from 'phosphor-react';
 
+import Products from './products.json';
 import MainImageCoffee from '../../assets/Home/main-image-coffee.svg'
 import { Counter } from '../../components/Counter';
 import { ItemsInformation } from './Components/ItemsInformation';
@@ -18,6 +19,16 @@ import {
   Main,
   SectionContent
 } from "./styles";
+
+
+function ConvertPrice(price: number) {
+  const number = price;
+  const formattedNumber = number.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', useGrouping: false });
+
+  const [BRL, Price] = formattedNumber.split(" ");
+
+  return Price;
+}
 
 export function Home() {
   return (
@@ -39,34 +50,38 @@ export function Home() {
       <CoffeeList>
         <div>
           <h2>Nossos cafés</h2>
-          <List>
-            <CoffeeType>
-              <img src="src\assets\CoffeTypeSvgs\Type=Expresso.svg" alt="" width={120} height={120} />
+          <form>
+            <List>
+              {Products.map(product => (
+                <CoffeeType key={product.name}>
+                  <img src={`src\\assets\\CoffeTypeSvgs\\Type=${product.name}.svg`} alt="" width={120} height={120} />
 
-              <CoffeeLabels>
-                <label>tradicional</label>
-                <label>com leite</label>
-                <label>alcoolico</label>
-              </CoffeeLabels>
+                  <CoffeeLabels>
+                    {product.label.map((labelName) => (
+                      <label key={labelName}>{labelName}</label>
+                    ))}
+                  </CoffeeLabels>
 
-              <CoffeeDescription>
-                <h4>Expresso Tradicional</h4>
-                <span>O tradicional café feito com água quente e grãos moídos</span>
-              </CoffeeDescription>
+                  <CoffeeDescription>
+                    <h4>{product.name}</h4>
+                    <span>{product.description}</span>
+                  </CoffeeDescription>
 
-              <CoffeePriceTagMenu>
-                <label>9,90</label>
+                  <CoffeePriceTagMenu>
+                    <label>{ConvertPrice(product.price)}</label>
 
-                <ActionMenu>
-                  <Counter />
+                    <ActionMenu>
+                      <Counter product={product} />
 
-                  <CartButton href='/checkout'>
-                    <ShoppingCartSimple weight="fill" />
-                  </CartButton>
-                </ActionMenu>
-              </CoffeePriceTagMenu>
-            </CoffeeType>
-          </List>
+                      <CartButton href='/checkout'>
+                        <ShoppingCartSimple weight="fill" />
+                      </CartButton>
+                    </ActionMenu>
+                  </CoffeePriceTagMenu>
+                </CoffeeType>
+              ))}
+            </List>
+          </form>
         </div>
       </CoffeeList>
     </Main>
