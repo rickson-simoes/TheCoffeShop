@@ -1,7 +1,9 @@
-import { Coffee, Package, ShoppingCart, ShoppingCartSimple, Timer } from 'phosphor-react';
+import { ShoppingCartSimple } from 'phosphor-react';
+
 import MainImageCoffee from '../../assets/Home/main-image-coffee.svg'
 import { Counter } from '../../components/Counter';
-import { IconRounded } from '../../components/IconRounded';
+import { ItemsInformation } from './Components/ItemsInformation';
+import { TitleInformation } from './Components/TitleInformation';
 import {
   ActionMenu,
   CartButton,
@@ -12,11 +14,9 @@ import {
   CoffeeType,
   Content,
   Intro,
-  ItemsInformation,
   List,
   Main,
-  SectionContent,
-  TitleInformation
+  SectionContent
 } from "./styles";
 
 export function Home() {
@@ -25,32 +25,9 @@ export function Home() {
       <Intro>
         <Content>
           <SectionContent>
-            <TitleInformation>
-              <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+            <TitleInformation />
 
-              <span>
-                Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora
-              </span>
-            </TitleInformation>
-
-            <ItemsInformation>
-              <span>
-                <IconRounded backgroundColor='yellowDark' svg={<ShoppingCart weight="fill" />} />
-                Compra simples e segura
-              </span>
-              <span>
-                <IconRounded backgroundColor='darkGray' svg={<Package weight="fill" />} />
-                Embalagem mantém o café intacto
-              </span>
-              <span>
-                <IconRounded backgroundColor='yellow' svg={<Timer weight="fill" />} />
-                Entrega rápida e rastreada
-              </span>
-              <span>
-                <IconRounded backgroundColor='purple' svg={<Coffee weight="fill" />} />
-                O café chega fresquinho até você
-              </span>
-            </ItemsInformation>
+            <ItemsInformation />
           </SectionContent>
 
           <SectionContent>

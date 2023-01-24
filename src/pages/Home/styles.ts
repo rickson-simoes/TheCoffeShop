@@ -32,35 +32,6 @@ export const SectionContent = styled.section`
   max-width: 36.75rem;
 `
 
-export const TitleInformation = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 130%;
-  }  
-
-  span {
-    font-size: 1.25rem;
-  }
-`
-
-export const ItemsInformation = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 1.25rem;
-
-  span {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  
-`
-
 export const CoffeeList = styled.div`
   display: flex;
   justify-content: center;
