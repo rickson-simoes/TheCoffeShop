@@ -56,7 +56,7 @@ export const NavItem = styled.a<NavItemProps>`
   }
 `
 
-export const Counter = styled.div`
+export const ItemsQuantityNotification = styled.div`
   position: absolute;
   margin-bottom: 2.5rem;
   margin-left: 1rem;

@@ -1,11 +1,14 @@
 import { Outlet, useNavigate } from 'react-router-dom'
-import { ActionBar, HeaderContainer, Content, NavItem, Counter } from './styles'
+import { ActionBar, HeaderContainer, Content, NavItem, ItemsQuantityNotification } from './styles'
 
 import CoffeDelivery from '../../assets/logo/coffe-delivery.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react';
+import { BasketContext } from '../../App';
+import { useContext } from 'react';
 
 export function Header() {
   const navigate = useNavigate();
+  const { products } = useContext(BasketContext);
 
   return (
     <>
@@ -26,9 +29,9 @@ export function Header() {
             </NavItem>
 
             <NavItem href="/checkout" background='yellowLight' svgColor='yellowDark' fontColor='white'>
-              <Counter>
-                <span>3</span>
-              </Counter>
+              <ItemsQuantityNotification>
+                {products.length > 0 && <span>{products.length}</span>}
+              </ItemsQuantityNotification>
               <ShoppingCart weight="fill" size={22} />
             </NavItem>
           </ActionBar>
