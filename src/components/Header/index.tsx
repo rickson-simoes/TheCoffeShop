@@ -3,8 +3,8 @@ import { ActionBar, HeaderContainer, Content, NavItem, ItemsQuantityNotification
 
 import CoffeDelivery from '../../assets/logo/coffe-delivery.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react';
-import { BasketContext } from '../../App';
 import { useContext } from 'react';
+import { BasketContext } from '../../contexts/basketContext';
 
 export function Header() {
   const navigate = useNavigate();
