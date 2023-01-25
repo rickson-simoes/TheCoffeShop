@@ -38,7 +38,7 @@ interface NavItemProps {
   svgColor?: keyof typeof Colors;
 }
 
-export const NavItem = styled.a<NavItemProps>`
+export const NavItem = styled.div<NavItemProps>`
   padding: 0.5rem;
   display: flex;
   align-items: center;

@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { ActionBar, HeaderContainer, Content, NavItem, ItemsQuantityNotification } from './styles'
 
 import CoffeDelivery from '../../assets/logo/coffe-delivery.svg'
@@ -17,23 +17,26 @@ export function Header() {
           <img src={CoffeDelivery} alt="" onClick={() => navigate("/")} />
 
           <ActionBar>
-            <NavItem
-              href="#"
-              background='purpleLight'
-              fontColor='purpleDark'
-              svgColor='purple'
-            >
-              <MapPin weight="fill" size={22} />
+            <NavLink to="">
+              <NavItem
+                background='purpleLight'
+                fontColor='purpleDark'
+                svgColor='purple'
+              >
+                <MapPin weight="fill" size={22} />
 
-              <span>Porto Alegre, RS</span>
-            </NavItem>
+                <span>Porto Alegre, RS</span>
+              </NavItem>
+            </NavLink>
 
-            <NavItem href="/checkout" background='yellowLight' svgColor='yellowDark' fontColor='white'>
-              <ItemsQuantityNotification>
-                {products.length > 0 && <span>{products.length}</span>}
-              </ItemsQuantityNotification>
-              <ShoppingCart weight="fill" size={22} />
-            </NavItem>
+            <NavLink to="/checkout">
+              <NavItem background='yellowLight' svgColor='yellowDark' fontColor='white'>
+                <ItemsQuantityNotification>
+                  {products.length > 0 && <span>{products.length}</span>}
+                </ItemsQuantityNotification>
+                <ShoppingCart weight="fill" size={22} />
+              </NavItem>
+            </NavLink>
           </ActionBar>
         </Content>
       </HeaderContainer>
