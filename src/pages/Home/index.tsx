@@ -1,6 +1,5 @@
 import { ShoppingCartSimple } from 'phosphor-react';
 
-import Products from './products.json';
 import MainImageCoffee from '../../assets/Home/main-image-coffee.svg'
 import { Counter } from '../../components/Counter';
 import { ItemsInformation } from './Components/ItemsInformation';
@@ -21,7 +20,7 @@ import {
 } from "./styles";
 import { NavLink } from 'react-router-dom';
 import { ConvertToCurrency } from '../../Helpers/ConvertToCurrency';
-
+import { Products } from '../../Products';
 
 export function Home() {
   return (
