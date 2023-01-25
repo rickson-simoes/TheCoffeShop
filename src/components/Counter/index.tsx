@@ -7,11 +7,11 @@ import { CounterField } from "./styles";
 export function Counter({ product }: IProducts) {
   const [coffees, setCoffees] = useState<IProduct[]>([]);
   const { products, setAddProduct } = useContext(BasketContext);
-  const totalCoffeesCounter = products.filter(value => value.name == product.name).length || 0;
+  const totalCoffeesCounter = products.filter(value => value.id == product.id).length || 0;
 
   useEffect(() => {
     if (products.length > 0) {
-      const getAllCoffeesInsideProducts = products.filter(value => value.name == product.name);
+      const getAllCoffeesInsideProducts = products.filter(value => value.id == product.id);
 
       setCoffees(getAllCoffeesInsideProducts)
     }
@@ -24,11 +24,11 @@ export function Counter({ product }: IProducts) {
     }
 
     if (option == 'minus' && totalCoffeesCounter > 0) {
-      const index = coffees.findIndex(value => value.name == product.name)
+      const index = coffees.findIndex(value => value.id == product.id)
       coffees.splice(index, 1);
       setCoffees([...coffees]);
 
-      const updatedProducts = products.filter(value => value.name !== product.name);
+      const updatedProducts = products.filter(value => value.id !== product.id);
       setAddProduct([...updatedProducts, ...coffees]);
     }
   }
