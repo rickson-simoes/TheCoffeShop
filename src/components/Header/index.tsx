@@ -8,7 +8,7 @@ import { BasketContext } from '../../contexts/basketContext';
 
 export function Header() {
   const navigate = useNavigate();
-  const { products } = useContext(BasketContext);
+  const { TotalBasketItems } = useContext(BasketContext);
 
   return (
     <>
@@ -32,7 +32,7 @@ export function Header() {
             <NavLink to="/checkout">
               <NavItem background='yellowLight' svgColor='yellowDark' fontColor='white'>
                 <ItemsQuantityNotification>
-                  {products.length > 0 && <span>{products.length}</span>}
+                  {TotalBasketItems.length > 0 && <span>{TotalBasketItems.length}</span>}
                 </ItemsQuantityNotification>
                 <ShoppingCart weight="fill" size={22} />
               </NavItem>
