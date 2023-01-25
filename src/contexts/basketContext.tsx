@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { IBasketContextProvider, IBasketContextType, IItemsInBasket, IProduct } from "../interfaces";
+import { IBasketContextProvider, IBasketContextType, IItemsInReduceBasket, IProduct } from "../interfaces";
 import { ConvertToCurrency } from "../Helpers/ConvertToCurrency"
 
 
@@ -14,12 +14,12 @@ export function BasketContextProvider({ children }: IBasketContextProvider) {
 
   function TotalItemsInBasket(items: IProduct[]) {
     const countedItems = items.reduce((acc, item) => {
-      const { name, price } = item;
-      const removeSpacesInName = name.replace(/\s/g, "");
+      const { name, price, id } = item;
 
-      const key = removeSpacesInName;
+      const key = id;
       if (!acc[key]) {
         acc[key] = {
+          id,
           name,
           price: 0,
           quantity: 0
@@ -29,9 +29,9 @@ export function BasketContextProvider({ children }: IBasketContextProvider) {
       acc[key].quantity = acc[key].quantity == 0 ? 1 : acc[key].price / item.price;
 
       return acc;
-    }, {} as IItemsInBasket as any);
+    }, {} as IItemsInReduceBasket as any);
 
-    return Object.values(countedItems as IItemsInBasket[]);
+    return Object.values(countedItems as IItemsInReduceBasket[]);
   }
 
   const BasketItems = TotalItemsInBasket(products);
