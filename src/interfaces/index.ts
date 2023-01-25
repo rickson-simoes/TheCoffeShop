@@ -16,13 +16,14 @@ export interface IBasketContextType {
   TotalBasketItems: ITotalBasketItems[];
 }
 
-export interface IItemsInBasket {
+export interface IItemsInReduceBasket {
+  id: string;
   name: string;
   price: number;
   quantity: number;
 }
 
-export type ITotalBasketItems = Pick<IItemsInBasket, 'name' | 'quantity'> & { price: string };
+export type ITotalBasketItems = Pick<IItemsInReduceBasket, 'name' | 'quantity' | 'id'> & { price: string; };
 
 export interface IBasketContextProvider {
   children: React.ReactNode
