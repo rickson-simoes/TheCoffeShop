@@ -148,7 +148,7 @@ export const ActionMenu = styled.div`
     gap: 0.5rem;
   `
 
-export const CartButton = styled.a`
+export const CartButton = styled.div`
   background-color: ${props => props.theme.purpleDark};
   color: ${props => props.theme.white};
   border-radius: 6px;

@@ -19,16 +19,9 @@ import {
   Main,
   SectionContent
 } from "./styles";
+import { NavLink } from 'react-router-dom';
+import { ConvertToCurrency } from '../../Helpers/ConvertToCurrency';
 
-
-function ConvertPrice(price: number) {
-  const number = price;
-  const formattedNumber = number.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', useGrouping: false });
-
-  const [BRL, Price] = formattedNumber.split(" ");
-
-  return Price;
-}
 
 export function Home() {
   return (
@@ -68,14 +61,16 @@ export function Home() {
                   </CoffeeDescription>
 
                   <CoffeePriceTagMenu>
-                    <label>{ConvertPrice(product.price)}</label>
+                    <label>{ConvertToCurrency(product.price)}</label>
 
                     <ActionMenu>
                       <Counter product={product} />
 
-                      <CartButton href='/checkout'>
-                        <ShoppingCartSimple weight="fill" />
-                      </CartButton>
+                      <NavLink to="/checkout" title="Checkout cart">
+                        <CartButton>
+                          <ShoppingCartSimple weight="fill" />
+                        </CartButton>
+                      </NavLink>
                     </ActionMenu>
                   </CoffeePriceTagMenu>
                 </CoffeeType>
