@@ -42,8 +42,6 @@ export function BasketContextProvider({ children }: IBasketContextProvider) {
     }
   })
 
-  console.log(TotalBasketItems);
-
   return (
     <BasketContext.Provider
       value={{ products, setAddProduct, TotalBasketItems }}>
