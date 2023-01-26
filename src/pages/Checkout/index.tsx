@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import { Counter } from "../../components/Counter";
 import { BasketContext } from "../../contexts/basketContext";
-import { ConvertToCurrency } from "../../Helpers/ConvertToCurrency";
+import { ConvertToCurrencyBRL } from "../../Helpers/ConvertToCurrency";
 import { Inputs } from "./Components/Inputs";
 import { PaymentOptions } from "./Components/PaymentOptions";
 import { SvgTitleInformation } from "./Components/SvgTitleInformation";
@@ -14,7 +14,7 @@ export function CheckoutPage() {
 
   const totalItems = TotalBasketItems.reduce((acc, item) => acc + item.price, 0);
   const totalDelivery = 3.50;
-  const totalValue = ConvertToCurrency(totalItems + totalDelivery);
+  const totalValue = ConvertToCurrencyBRL(totalItems + totalDelivery);
 
   return (
     <FormContainer>
@@ -55,7 +55,7 @@ export function CheckoutPage() {
                   <img src={`src\\assets\\CoffeTypeSvgs\\Type=${value.name}.svg`} alt="" width={64} height={64} />
 
                   <ItemInformation>
-                    <span>{value.name}</span>
+                    <span>{value.name} <span>({ConvertToCurrencyBRL(value.unitPrice)} Und)</span></span>
                     <div>
                       <Counter {...value} />
                       <ButtonRemoval type="button"><Trash /> <span>Remover</span></ButtonRemoval>
@@ -63,22 +63,22 @@ export function CheckoutPage() {
                   </ItemInformation>
                 </ItemMenu>
 
-                <span>R$ {ConvertToCurrency(value.price)}</span>
+                <span>{ConvertToCurrencyBRL(value.price)}</span>
               </li>
             )) ?? "No coffees selected"}
           </List>
 
           <TotalOrder>
             <div>
-              <span>Total de itens</span> <span>R$ {ConvertToCurrency(totalItems)}</span>
+              <span>Total de itens</span> <span>{ConvertToCurrencyBRL(totalItems)}</span>
             </div>
 
             <div>
-              <span>Entrega</span> <span>R$ {ConvertToCurrency(totalDelivery)}</span>
+              <span>Entrega</span> <span>{ConvertToCurrencyBRL(totalDelivery)}</span>
             </div>
 
             <div>
-              <TotalFontSizeBigger>Total</TotalFontSizeBigger> <TotalFontSizeBigger>R$ {totalValue}</TotalFontSizeBigger>
+              <TotalFontSizeBigger>Total</TotalFontSizeBigger> <TotalFontSizeBigger>{totalValue}</TotalFontSizeBigger>
             </div>
           </TotalOrder>
 

@@ -2,6 +2,7 @@ export const Products = [
   {
     id: crypto.randomUUID(),
     name: "Expresso",
+    unitPrice: 9.90,
     price: 9.90,
     label: [
       "tradicional"
@@ -11,6 +12,7 @@ export const Products = [
   {
     id: crypto.randomUUID(),
     name: "Cubano",
+    unitPrice: 12.90,
     price: 12.90,
     label: [
       "especial",
@@ -22,6 +24,7 @@ export const Products = [
   {
     id: crypto.randomUUID(),
     name: "Mochaccino",
+    unitPrice: 11.90,
     price: 11.90,
     label: [
       "tradicional",

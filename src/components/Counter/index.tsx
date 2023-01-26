@@ -5,6 +5,7 @@ import { IProduct } from "../../interfaces";
 import { CounterField } from "./styles";
 
 export function Counter(product: IProduct) {
+  console.log(product);
   const [coffees, setCoffees] = useState<IProduct[]>([]);
   const { products, setAddProduct } = useContext(BasketContext);
   const totalCoffeesCounter = products.filter(value => value.id == product.id).length || 0;

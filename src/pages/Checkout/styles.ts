@@ -88,7 +88,16 @@ export const ItemInformation = styled.div`
   }
 
   > span {
-    color: ${props => props.theme["gray-800"]}
+    color: ${props => props.theme["gray-800"]};
+    word-break: break-word;
+    padding-right: 0.5rem;
+
+    > span {
+      display: block;
+      font-size: 0.875rem;
+      color: ${props => props.theme["gray-700"]};
+      font-style: italic;
+    }
   }
 `
 

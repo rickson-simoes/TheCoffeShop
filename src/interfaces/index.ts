@@ -1,6 +1,7 @@
 export interface IProduct {
   id: string;
   name: string;
+  unitPrice?: number;
   price: number | string;
   label?: string[];
   description?: string;
@@ -9,6 +10,7 @@ export interface IProduct {
 export interface ITotalItemsInBasket {
   id: string;
   name: string;
+  unitPrice: number;
   price: number;
   quantity: number;
 }

@@ -12,19 +12,20 @@ export function BasketContextProvider({ children }: IBasketContextProvider) {
 
   function TotalItemsInBasket(items: IProduct[]) {
     const countedItems = items.reduce((acc, item) => {
-      const { name, price, id } = item;
+      const { name, id, unitPrice } = item;
 
       const key = id;
       if (!acc[key]) {
         acc[key] = {
           id,
           name,
+          unitPrice,
           price: 0,
           quantity: 0
         };
       }
-      acc[key].price += price;
-      acc[key].quantity = acc[key].quantity == 0 ? 1 : acc[key].price / Number(item.price);
+      acc[key].price += unitPrice;
+      acc[key].quantity = acc[key].quantity == 0 ? 1 : acc[key].price / Number(item.unitPrice);
 
       return acc;
     }, {} as ITotalItemsInBasket as any);
@@ -40,6 +41,8 @@ export function BasketContextProvider({ children }: IBasketContextProvider) {
       quantity: Math.round(value.quantity)
     }
   })
+
+  console.log(TotalBasketItems);
 
   return (
     <BasketContext.Provider
