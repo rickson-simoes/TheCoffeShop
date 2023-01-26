@@ -1,7 +1,5 @@
 import { createContext, useState } from "react";
-import { IBasketContextProvider, IBasketContextType, IItemsInReduceBasket, IProduct } from "../interfaces";
-import { ConvertToCurrency } from "../Helpers/ConvertToCurrency"
-
+import { IBasketContextProvider, IBasketContextType, ITotalItemsInBasket, IProduct } from "../interfaces";
 
 export const BasketContext = createContext({} as IBasketContextType);
 
@@ -26,19 +24,19 @@ export function BasketContextProvider({ children }: IBasketContextProvider) {
         };
       }
       acc[key].price += price;
-      acc[key].quantity = acc[key].quantity == 0 ? 1 : acc[key].price / item.price;
+      acc[key].quantity = acc[key].quantity == 0 ? 1 : acc[key].price / Number(item.price);
 
       return acc;
-    }, {} as IItemsInReduceBasket as any);
+    }, {} as ITotalItemsInBasket as any);
 
-    return Object.values(countedItems as IItemsInReduceBasket[]);
+    return Object.values(countedItems as ITotalItemsInBasket[]);
   }
 
   const BasketItems = TotalItemsInBasket(products);
   const TotalBasketItems = BasketItems.map(value => {
     return {
       ...value,
-      price: ConvertToCurrency(value.price),
+      price: value.price,
       quantity: Math.round(value.quantity)
     }
   })
