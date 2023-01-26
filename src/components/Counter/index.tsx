@@ -1,10 +1,10 @@
 import { Minus, Plus } from "phosphor-react";
 import { useContext, useEffect, useState } from "react";
 import { BasketContext } from "../../contexts/basketContext";
-import { IProducts, IProduct } from "../../interfaces";
+import { IProduct } from "../../interfaces";
 import { CounterField } from "./styles";
 
-export function Counter({ product }: IProducts) {
+export function Counter(product: IProduct) {
   const [coffees, setCoffees] = useState<IProduct[]>([]);
   const { products, setAddProduct } = useContext(BasketContext);
   const totalCoffeesCounter = products.filter(value => value.id == product.id).length || 0;
