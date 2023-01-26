@@ -63,7 +63,7 @@ export function Home() {
                     <label>{ConvertToCurrency(product.price)}</label>
 
                     <ActionMenu>
-                      <Counter product={product} />
+                      <Counter {...product} />
 
                       <NavLink to="/checkout" title="Checkout cart">
                         <CartButton>
