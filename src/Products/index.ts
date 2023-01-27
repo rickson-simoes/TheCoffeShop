@@ -1,4 +1,6 @@
-export const Products = [
+import { IProduct } from "../interfaces";
+
+export const Products: IProduct[] = [
   {
     id: crypto.randomUUID(),
     name: "Expresso",
