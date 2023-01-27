@@ -10,9 +10,9 @@ import { SvgTitleInformation } from "./Components/SvgTitleInformation";
 import { ButtonCheckoutOrder, ButtonRemoval, FormContainer, ItemInformation, ItemMenu, List, OrderCheckout, OrderContainer, TotalFontSizeBigger, TotalOrder } from "./styles";
 
 export function CheckoutPage() {
-  const { TotalBasketItems } = useContext(BasketContext);
+  const { allCoffees, removeAll } = useContext(BasketContext);
 
-  const totalItems = TotalBasketItems.reduce((acc, item) => acc + item.price, 0);
+  const totalItems = allCoffees.reduce((acc, item) => acc + item.price, 0);
   const totalDelivery = 3.50;
   const totalValue = ConvertToCurrencyBRL(totalItems + totalDelivery);
 
@@ -49,7 +49,7 @@ export function CheckoutPage() {
 
         <OrderCheckout>
           <List>
-            {TotalBasketItems.map((value) => (
+            {allCoffees.map((value) => (
               <li key={value.id}>
                 <ItemMenu>
                   <img src={`src\\assets\\CoffeTypeSvgs\\Type=${value.name}.svg`} alt="" width={64} height={64} />
@@ -58,14 +58,14 @@ export function CheckoutPage() {
                     <span>{value.name} <span>({ConvertToCurrencyBRL(value.unitPrice)} Und)</span></span>
                     <div>
                       <Counter {...value} />
-                      <ButtonRemoval type="button"><Trash /> <span>Remover</span></ButtonRemoval>
+                      <ButtonRemoval type="button" onClick={() => removeAll(value.id)}><Trash /> <span>Remover</span></ButtonRemoval>
                     </div>
                   </ItemInformation>
                 </ItemMenu>
 
                 <span>{ConvertToCurrencyBRL(value.price)}</span>
               </li>
-            )) ?? "No coffees selected"}
+            ))}
           </List>
 
           <TotalOrder>
