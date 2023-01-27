@@ -1,50 +1,61 @@
 import { createContext, useState } from "react";
-import { IBasketContextProvider, IBasketContextType, ITotalItemsInBasket, IProduct } from "../interfaces";
+import { IBasketContextProvider, IBasketContextType, ITotalItemsInBasket, ICoffee } from "../interfaces";
 
 export const BasketContext = createContext({} as IBasketContextType);
 
 export function BasketContextProvider({ children }: IBasketContextProvider) {
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const [allCoffees, setAllCoffees] = useState<ITotalItemsInBasket[]>([]);
 
-  function setAddProduct(item: IProduct[]) {
-    setProducts(item);
-  }
+  function addCoffee(item: ICoffee) {
+    const coffeeExists = allCoffees.find(coffee => coffee.id == item.id) ?? false;
 
-  function TotalItemsInBasket(items: IProduct[]) {
-    const countedItems = items.reduce((acc, item) => {
-      const { name, id, unitPrice } = item;
+    if (!coffeeExists) {
+      setAllCoffees([...allCoffees, { ...item, quantity: 1 }]);
+    } else {
+      const coffeeIndex = allCoffees.findIndex(coffee => coffee.id == item.id);
 
-      const key = id;
-      if (!acc[key]) {
-        acc[key] = {
-          id,
-          name,
-          unitPrice,
-          price: 0,
-          quantity: 0
-        };
+      const renewCoffeeValue: ITotalItemsInBasket = {
+        ...item,
+        price: coffeeExists.unitPrice + coffeeExists.price,
+        quantity: coffeeExists.quantity + 1,
       }
-      acc[key].price += unitPrice;
-      acc[key].quantity = acc[key].quantity == 0 ? 1 : acc[key].price / Number(item.unitPrice);
 
-      return acc;
-    }, {} as ITotalItemsInBasket as any);
-
-    return Object.values(countedItems as ITotalItemsInBasket[]);
+      allCoffees.splice(coffeeIndex, 1, renewCoffeeValue);
+      setAllCoffees([...allCoffees]);
+    }
   }
 
-  const BasketItems = TotalItemsInBasket(products);
-  const TotalBasketItems = BasketItems.map(value => {
-    return {
-      ...value,
-      price: value.price,
-      quantity: Math.round(value.quantity)
+  function removeCoffee(item: ICoffee) {
+    const coffeeExists = allCoffees.find(coffee => coffee.id == item.id) ?? false;
+
+    if (coffeeExists) {
+      const coffeeIndex = allCoffees.findIndex(coffee => coffee.id == item.id);
+
+      if (coffeeExists.quantity == 1) {
+        allCoffees.splice(coffeeIndex, 1);
+        setAllCoffees([...allCoffees]);
+      } else {
+        const renewCoffeeValue: ITotalItemsInBasket = {
+          ...item,
+          price: coffeeExists.price - coffeeExists.unitPrice,
+          quantity: coffeeExists.quantity - 1,
+        }
+
+        allCoffees.splice(coffeeIndex, 1, renewCoffeeValue);
+        setAllCoffees([...allCoffees]);
+      }
     }
-  })
+  }
+
+  function removeAll(id: string) {
+    const removeAllCoffeesWithPropID = allCoffees.filter(coffee => coffee.id != id);
+
+    setAllCoffees(removeAllCoffeesWithPropID)
+  }
 
   return (
     <BasketContext.Provider
-      value={{ products, setAddProduct, TotalBasketItems }}>
+      value={{ addCoffee, removeCoffee, allCoffees, removeAll }}>
       {children}
     </BasketContext.Provider>
   )
