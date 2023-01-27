@@ -22,6 +22,14 @@ export const Content = styled.div`
   align-items: center;
   width: 70rem;
   justify-content: space-between;
+
+  @media (max-width:1100px) {
+    justify-content: center;
+
+    section:last-child{
+      display: none;
+    }
+  } 
 `
 
 export const SectionContent = styled.section`
@@ -30,6 +38,15 @@ export const SectionContent = styled.section`
   gap: 4.125rem;
 
   max-width: 36.75rem;
+
+  > img {
+    width: 100%;
+  }
+
+  @media (max-width:1100px) {
+    max-width: 100%;
+    padding: 2rem;
+  } 
 `
 
 export const CoffeeList = styled.div`
