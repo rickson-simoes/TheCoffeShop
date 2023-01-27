@@ -34,7 +34,7 @@ export function Home() {
           </SectionContent>
 
           <SectionContent>
-            <img src={MainImageCoffee} alt="Imagem de um copo com a logo CoffeeDelivery" width='476' height='360' />
+            <img src={MainImageCoffee} alt="Imagem de um copo com a logo CoffeeDelivery" />
           </SectionContent>
         </Content>
       </Intro>
@@ -63,7 +63,7 @@ export function Home() {
                     <label>{ConvertToCurrency(product.price)}</label>
 
                     <ActionMenu>
-                      <Counter {...product} />
+                      <Counter id={product.id} name={product.name} price={product.price} unitPrice={product.unitPrice} />
 
                       <NavLink to="/checkout" title="Checkout cart">
                         <CartButton>
