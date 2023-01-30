@@ -5,9 +5,10 @@ export const BasketContext = createContext({} as IBasketContextType);
 
 export function BasketContextProvider({ children }: IBasketContextProvider) {
   const [allCoffees, setAllCoffees] = useState<ITotalItemsInBasket[]>([]);
+  const findCoffeeOrFalse = (item: ICoffee) => allCoffees.find(coffee => coffee.id == item.id) ?? false;
 
   function addCoffee(item: ICoffee) {
-    const coffeeExists = allCoffees.find(coffee => coffee.id == item.id) ?? false;
+    const coffeeExists = findCoffeeOrFalse(item);
 
     if (!coffeeExists) {
       setAllCoffees([...allCoffees, { ...item, quantity: 1 }]);
@@ -26,7 +27,7 @@ export function BasketContextProvider({ children }: IBasketContextProvider) {
   }
 
   function removeCoffee(item: ICoffee) {
-    const coffeeExists = allCoffees.find(coffee => coffee.id == item.id) ?? false;
+    const coffeeExists = findCoffeeOrFalse(item);
 
     if (coffeeExists) {
       const coffeeIndex = allCoffees.findIndex(coffee => coffee.id == item.id);
