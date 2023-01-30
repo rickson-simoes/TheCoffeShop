@@ -32,3 +32,15 @@ export interface IBasketContextType {
 export interface IBasketContextProvider {
   children: React.ReactNode
 }
+
+export enum CoffeeActionTypes {
+  Add = "Add",
+  AddMore = "AddMore",
+  Remove = "Remove",
+  RemoveMore = "RemoveMore",
+}
+
+export interface DispatchOptions {
+  payload: ITotalItemsInBasket,
+  type: CoffeeActionTypes
+};
