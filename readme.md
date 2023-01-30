@@ -39,4 +39,4 @@ _A Delivery app from a Coffe Shop, what about order one? or... two? =)_
 
 [![TheCoffeShop2](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img2.png "Checkout Cart")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img2.png "Project Demonstration")
 
-[![TheCoffeShop3](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img3.png "Success")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img3.png "Project Demonstration")
+[![TheCoffeShop3](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img33.png "Success")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img33.png "Project Demonstration")
