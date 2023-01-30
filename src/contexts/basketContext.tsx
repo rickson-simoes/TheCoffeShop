@@ -1,58 +1,118 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer, useState } from "react";
 import { IBasketContextProvider, IBasketContextType, ITotalItemsInBasket, ICoffee } from "../interfaces";
 
 export const BasketContext = createContext({} as IBasketContextType);
 
 export function BasketContextProvider({ children }: IBasketContextProvider) {
-  const [allCoffees, setAllCoffees] = useState<ITotalItemsInBasket[]>([]);
-  const findCoffeeOrFalse = (item: ICoffee) => allCoffees.find(coffee => coffee.id == item.id) ?? false;
 
-  function addCoffee(item: ICoffee) {
-    const selectedCoffee = findCoffeeOrFalse(item);
+  enum CoffeeActionTypes {
+    Add = "Add",
+    AddMore = "AddMore",
+    Remove = "Remove",
+    RemoveMore = "RemoveMore",
+  }
 
-    if (!selectedCoffee) {
-      setAllCoffees([...allCoffees, { ...item, quantity: 1 }]);
-    } else {
-      setAllCoffees(state => state.map((coffee) => {
-        if (coffee.id == item.id) {
+  interface DispatchOptions {
+    payload: ITotalItemsInBasket,
+    type: CoffeeActionTypes
+  };
+
+  const [allCoffees, dispatch] = useReducer((state: ITotalItemsInBasket[], action: DispatchOptions) => {
+    if (action.type === CoffeeActionTypes.Add) {
+      return [...state, action.payload];
+    }
+
+    if (action.type === CoffeeActionTypes.AddMore) {
+      return state.map((coffee) => {
+        if (coffee.id == action.payload.id) {
           return {
-            ...item,
-            price: selectedCoffee.unitPrice + selectedCoffee.price,
-            quantity: selectedCoffee.quantity + 1
+            ...action.payload
           }
         } else {
           return coffee;
         }
-      }));
+      });
+    }
+
+    if (action.type === CoffeeActionTypes.Remove) {
+      return state.filter(coffee => coffee.id != action.payload.id);
+    }
+
+    if (action.type === CoffeeActionTypes.RemoveMore) {
+      return state.map(coffee => {
+        if (coffee.id == action.payload.id) {
+          return {
+            ...action.payload
+          }
+        } else {
+          return coffee;
+        }
+      });
+    }
+
+    return state;
+  }, [] as ITotalItemsInBasket[]);
+
+  const findCoffee = (id: string) => allCoffees.find(coffee => coffee.id == id) ?? false;
+
+  function addCoffee(item: ICoffee) {
+    const selectedCoffee = findCoffee(item.id);
+
+    if (!selectedCoffee) {
+      dispatch({
+        type: CoffeeActionTypes.Add,
+        payload: {
+          ...item,
+          quantity: 1
+        }
+      });
+
+    } else {
+      dispatch({
+        type: CoffeeActionTypes.AddMore,
+        payload: {
+          ...item,
+          price: selectedCoffee.unitPrice + selectedCoffee.price,
+          quantity: selectedCoffee.quantity + 1
+        }
+      });
     }
   }
 
   function removeCoffee(item: ICoffee) {
-    const selectedCoffee = allCoffees.find(coffee => coffee.id == item.id);
+    const selectedCoffee = findCoffee(item.id);
 
     if (selectedCoffee)
       if (selectedCoffee.quantity == 1) {
-        const updateCoffeeList = allCoffees.filter(coffee => coffee.id !== item.id);
-        setAllCoffees(updateCoffeeList);
-      } else {
-        setAllCoffees(state => state.map(coffee => {
-          if (coffee.id === item.id) {
-            return {
-              ...item,
-              price: selectedCoffee.price - selectedCoffee.unitPrice,
-              quantity: selectedCoffee.quantity - 1
-            }
-          } else {
-            return coffee
+        dispatch({
+          type: CoffeeActionTypes.Remove,
+          payload: {
+            ...selectedCoffee
           }
-        }))
+        });
+
+      } else {
+        dispatch({
+          type: CoffeeActionTypes.RemoveMore,
+          payload: {
+            ...item,
+            price: selectedCoffee.price - selectedCoffee.unitPrice,
+            quantity: selectedCoffee.quantity - 1
+          }
+        })
       }
   }
 
   function removeAll(id: string) {
-    const removeAllCoffeesWithPropID = allCoffees.filter(coffee => coffee.id != id);
+    const selectedCoffee = findCoffee(id);
 
-    setAllCoffees(removeAllCoffeesWithPropID)
+    if (selectedCoffee)
+      dispatch({
+        type: CoffeeActionTypes.Remove,
+        payload: {
+          ...selectedCoffee
+        }
+      });
   }
 
   return (
