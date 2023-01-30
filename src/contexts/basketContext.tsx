@@ -8,44 +8,45 @@ export function BasketContextProvider({ children }: IBasketContextProvider) {
   const findCoffeeOrFalse = (item: ICoffee) => allCoffees.find(coffee => coffee.id == item.id) ?? false;
 
   function addCoffee(item: ICoffee) {
-    const coffeeExists = findCoffeeOrFalse(item);
+    const selectedCoffee = findCoffeeOrFalse(item);
 
-    if (!coffeeExists) {
+    if (!selectedCoffee) {
       setAllCoffees([...allCoffees, { ...item, quantity: 1 }]);
     } else {
-      const coffeeIndex = allCoffees.findIndex(coffee => coffee.id == item.id);
-
-      const renewCoffeeValue: ITotalItemsInBasket = {
-        ...item,
-        price: coffeeExists.unitPrice + coffeeExists.price,
-        quantity: coffeeExists.quantity + 1,
-      }
-
-      allCoffees.splice(coffeeIndex, 1, renewCoffeeValue);
-      setAllCoffees([...allCoffees]);
+      setAllCoffees(state => state.map((coffee) => {
+        if (coffee.id == item.id) {
+          return {
+            ...item,
+            price: selectedCoffee.unitPrice + selectedCoffee.price,
+            quantity: selectedCoffee.quantity + 1
+          }
+        } else {
+          return coffee;
+        }
+      }));
     }
   }
 
   function removeCoffee(item: ICoffee) {
-    const coffeeExists = findCoffeeOrFalse(item);
+    const selectedCoffee = allCoffees.find(coffee => coffee.id == item.id);
 
-    if (coffeeExists) {
-      const coffeeIndex = allCoffees.findIndex(coffee => coffee.id == item.id);
-
-      if (coffeeExists.quantity == 1) {
-        allCoffees.splice(coffeeIndex, 1);
-        setAllCoffees([...allCoffees]);
+    if (selectedCoffee)
+      if (selectedCoffee.quantity == 1) {
+        const updateCoffeeList = allCoffees.filter(coffee => coffee.id !== item.id);
+        setAllCoffees(updateCoffeeList);
       } else {
-        const renewCoffeeValue: ITotalItemsInBasket = {
-          ...item,
-          price: coffeeExists.price - coffeeExists.unitPrice,
-          quantity: coffeeExists.quantity - 1,
-        }
-
-        allCoffees.splice(coffeeIndex, 1, renewCoffeeValue);
-        setAllCoffees([...allCoffees]);
+        setAllCoffees(state => state.map(coffee => {
+          if (coffee.id === item.id) {
+            return {
+              ...item,
+              price: selectedCoffee.price - selectedCoffee.unitPrice,
+              quantity: selectedCoffee.quantity - 1
+            }
+          } else {
+            return coffee
+          }
+        }))
       }
-    }
   }
 
   function removeAll(id: string) {
