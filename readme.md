@@ -33,10 +33,10 @@ _A Delivery app from a Coffe Shop, what about order one? or... two? =)_
 ```
 
 
-<!-- <h2>📸 App Images</h2>
+<h2>📸 App Images</h2>
 
-[![dodoingdid](https://raw.githubusercontent.com/rickson-simoes/DoDoingDidList/main/src/imgs_samples/dodoingdid.jpg "Project view")](https://raw.githubusercontent.com/rickson-simoes/DoDoingDidList/main/src/imgs_samples/dodoingdid.jpg "Project Demonstration")
+[![TheCoffeShop](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img1.png "Home")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img1.png "Project Demonstration")
 
-[![dodoingdid2](https://raw.githubusercontent.com/rickson-simoes/DoDoingDidList/main/src/imgs_samples/dodoingdid2.jpg "Add new task")](https://raw.githubusercontent.com/rickson-simoes/DoDoingDidList/main/src/imgs_samples/dodoingdid2.jpg "Project Demonstration")
+[![TheCoffeShop2](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img2.png "Checkout Cart")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img2.png "Project Demonstration")
 
-[![dodoingdid3](https://raw.githubusercontent.com/rickson-simoes/DoDoingDidList/main/src/imgs_samples/dodoingdid3.jpg "Completing task")](https://raw.githubusercontent.com/rickson-simoes/DoDoingDidList/main/src/imgs_samples/dodoingdid3.jpg "Project Demonstration") -->
+[![TheCoffeShop3](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img3.png "Success")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img3.png "Project Demonstration")
