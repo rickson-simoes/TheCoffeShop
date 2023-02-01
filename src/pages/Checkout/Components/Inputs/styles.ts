@@ -23,7 +23,7 @@ export const CustomInput = styled.input`
   }
 `
 
-export const InputRowCustomOne = styled.div`
+export const RowInputsOne = styled.div`
   display: flex;
   gap: 1rem;
 `
@@ -57,7 +57,7 @@ export const OptionalInput = styled.div`
   }
 `
 
-export const InputRowCustomTwo = styled.div`
+export const RowInputsTwo = styled.div`
   display: flex;
   gap: 1rem;
 

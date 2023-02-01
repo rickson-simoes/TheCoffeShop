@@ -24,6 +24,7 @@ export const LabelPayment = styled.label<ILabelPayment>`
   padding: 1rem;    
   font-size: 0.75rem;
   text-transform: uppercase;
+  cursor: pointer;
 
   transition: all 0.1s;
 

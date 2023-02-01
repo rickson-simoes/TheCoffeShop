@@ -1,9 +1,11 @@
 import { Bank, CreditCard, Money } from "phosphor-react";
 import { ChangeEvent, useState } from "react";
+import { useFormContext } from "react-hook-form";
 import { LabelPayment, PaymentContainer } from "./styles";
 
 export function PaymentOptions() {
   const [option, setOption] = useState("");
+  const { register } = useFormContext();
 
   function handleOptionPayment(event: ChangeEvent<HTMLInputElement>) {
     setOption(event.target.value)
@@ -16,8 +18,8 @@ export function PaymentOptions() {
           type="radio"
           value="credito"
           checked={option == "credito"}
-          onChange={handleOptionPayment}
           hidden
+          {...register('formaPagamento', { onChange: (e) => handleOptionPayment(e) })}
         />
 
         <CreditCard size={16} /> Cartão de crédito
@@ -28,8 +30,8 @@ export function PaymentOptions() {
           type="radio"
           value="debito"
           checked={option == "debito"}
-          onChange={handleOptionPayment}
           hidden
+          {...register('formaPagamento', { onChange: (e) => handleOptionPayment(e) })}
         />
 
         <Bank size={16} /> Cartão de débito
@@ -40,8 +42,8 @@ export function PaymentOptions() {
           type="radio"
           value="dinheiro"
           checked={option == "dinheiro"}
-          onChange={handleOptionPayment}
           hidden
+          {...register('formaPagamento', { onChange: (e) => handleOptionPayment(e) })}
         />
 
         <Money size={16} /> Dinheiro

@@ -1,5 +1,8 @@
 import { CurrencyDollar, MapPinLine, Trash } from "phosphor-react";
 import { useContext } from "react";
+import { useForm, FormProvider } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as zod from 'zod';
 
 import { Counter } from "../../components/Counter";
 import { BasketContext } from "../../contexts/basketContext";
@@ -9,15 +12,43 @@ import { PaymentOptions } from "./Components/PaymentOptions";
 import { SvgTitleInformation } from "./Components/SvgTitleInformation";
 import { ButtonCheckoutOrder, ButtonRemoval, FormContainer, ItemInformation, ItemMenu, List, OrderCheckout, OrderContainer, TotalFontSizeBigger, TotalOrder } from "./styles";
 
+
+
 export function CheckoutPage() {
+  const obrigatoryField = { invalid_type_error: "Campo obrigatório" };
+
+  const userInformationValidationSchema = zod.object({
+    cep: zod.string(obrigatoryField).min(8, 'Cep inválido, Mín: 8 caracteres').max(9, 'Máx: 9 caracteres'),
+    rua: zod.string(obrigatoryField).min(2, 'Mín: 2 caracteres').max(50, 'Máx: 50 caracteres'),
+    numero: zod.number(obrigatoryField).min(1, 'Mín: 1 caracter'),
+    complemento: zod.string().max(50, 'Max: 50 caracteres'),
+    bairro: zod.string(obrigatoryField).min(2, 'Mín: 2 caracteres'),
+    cidade: zod.string(obrigatoryField).min(2, 'Mín: 2 caracteres'),
+    uf: zod.string(obrigatoryField).max(2, 'Máx: 2 caracteres'),
+    formaPagamento: zod.string(obrigatoryField),
+  });
+
+  type IUserInformationValidationSchema = zod.infer<typeof userInformationValidationSchema>;
+
+  const FormData = useForm<IUserInformationValidationSchema>({
+    resolver: zodResolver(userInformationValidationSchema),
+  });
+
+  const { handleSubmit, formState } = FormData
+  console.log(formState.errors);
+
   const { allCoffees, removeAll } = useContext(BasketContext);
 
   const totalItems = allCoffees.reduce((acc, item) => acc + item.price, 0);
   const totalDelivery = 3.50;
   const totalValue = ConvertToCurrencyBRL(totalItems + totalDelivery);
 
+  function handleSubmitOrder(data: any) {
+    console.log(data);
+  }
+
   return (
-    <FormContainer>
+    <FormContainer onSubmit={handleSubmit(handleSubmitOrder)}>
       <section>
         <h4>Complete seu pedido</h4>
 
@@ -29,7 +60,9 @@ export function CheckoutPage() {
             svgColor="yellowDark"
           />
 
-          <Inputs />
+          <FormProvider {...FormData}>
+            <Inputs />
+          </FormProvider>
         </OrderContainer>
 
         <OrderContainer>
@@ -40,7 +73,9 @@ export function CheckoutPage() {
             svgColor="purple"
           />
 
-          <PaymentOptions />
+          <FormProvider {...FormData}>
+            <PaymentOptions />
+          </FormProvider>
         </OrderContainer>
       </section>
 

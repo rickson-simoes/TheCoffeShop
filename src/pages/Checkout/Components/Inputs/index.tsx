@@ -1,28 +1,31 @@
-import { AddressInputs, CustomInput, InputRowCustomOne, OptionalInput, InputRowCustomTwo } from "./styles";
+import { useFormContext } from "react-hook-form";
+import { AddressInputs, CustomInput, OptionalInput, RowInputsOne, RowInputsTwo } from "./styles";
 
 export function Inputs() {
+  const { register } = useFormContext();
+
   return (
     <AddressInputs>
       <div>
-        <CustomInput type="text" placeholder="CEP" />
+        <CustomInput type="text" placeholder="CEP" {...register('cep')} maxLength={9} />
       </div>
 
-      <CustomInput type="text" placeholder="Rua" />
+      <CustomInput type="text" placeholder="Rua" {...register('rua')} />
 
-      <InputRowCustomOne>
-        <CustomInput type="text" placeholder="Número" />
+      <RowInputsOne>
+        <CustomInput type="number" placeholder="Número" {...register('numero', { valueAsNumber: true, })} />
 
         <OptionalInput>
-          <CustomInput type="text" placeholder="Complemento" />
+          <CustomInput type="text" placeholder="Complemento" {...register('complemento')} />
           <span>Opcional</span>
         </OptionalInput>
-      </InputRowCustomOne>
+      </RowInputsOne>
 
-      <InputRowCustomTwo>
-        <CustomInput type="text" placeholder="Bairro" />
-        <CustomInput type="text" placeholder="Cidade" />
-        <CustomInput type="text" placeholder="UF" />
-      </InputRowCustomTwo>
+      <RowInputsTwo>
+        <CustomInput type="text" placeholder="Bairro" {...register('bairro')} />
+        <CustomInput type="text" placeholder="Cidade" {...register('cidade')} />
+        <CustomInput type="text" placeholder="UF" {...register('uf')} />
+      </RowInputsTwo>
     </AddressInputs>
   )
 }
