@@ -19,23 +19,22 @@ export function CheckoutPage() {
 
   const userInformationValidationSchema = zod.object({
     cep: zod.string(obrigatoryField).min(8, 'Cep inválido, Mín: 8 caracteres').max(9, 'Máx: 9 caracteres'),
-    rua: zod.string(obrigatoryField).min(2, 'Mín: 2 caracteres').max(50, 'Máx: 50 caracteres'),
-    numero: zod.number(obrigatoryField).min(1, 'Mín: 1 caracter'),
+    rua: zod.string(obrigatoryField).min(2, 'Min: 2 caracteres').max(50, 'Máx: 50 caracteres'),
+    numero: zod.number(obrigatoryField).min(1, 'Min: 1 caracter'),
     complemento: zod.string().max(50, 'Max: 50 caracteres'),
-    bairro: zod.string(obrigatoryField).min(2, 'Mín: 2 caracteres'),
-    cidade: zod.string(obrigatoryField).min(2, 'Mín: 2 caracteres'),
+    bairro: zod.string(obrigatoryField).min(2, 'Min: 2 caracteres'),
+    cidade: zod.string(obrigatoryField).min(2, 'Min: 2 caracteres'),
     uf: zod.string(obrigatoryField).max(2, 'Máx: 2 caracteres'),
-    formaPagamento: zod.string(obrigatoryField),
+    formaPagamento: zod.enum(["credito", "debito", "dinheiro"], { errorMap: () => ({ message: "Inserir forma de pagamento" }) }),
   });
 
-  type IUserInformationValidationSchema = zod.infer<typeof userInformationValidationSchema>;
+  type IFormInformationSchema = zod.infer<typeof userInformationValidationSchema>;
 
-  const FormData = useForm<IUserInformationValidationSchema>({
+  const FormData = useForm<IFormInformationSchema>({
     resolver: zodResolver(userInformationValidationSchema),
   });
 
-  const { handleSubmit, formState } = FormData
-  console.log(formState.errors);
+  const { handleSubmit, reset } = FormData
 
   const { allCoffees, removeAll } = useContext(BasketContext);
 
@@ -43,8 +42,9 @@ export function CheckoutPage() {
   const totalDelivery = 3.50;
   const totalValue = ConvertToCurrencyBRL(totalItems + totalDelivery);
 
-  function handleSubmitOrder(data: any) {
+  function handleSubmitOrder(data: IFormInformationSchema) {
     console.log(data);
+    // reset();
   }
 
   return (
