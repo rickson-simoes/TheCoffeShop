@@ -6,13 +6,16 @@ import { GlobalStyle } from "./styles/global";
 import { defaultTheme } from "./styles/themes/default";
 
 import { BasketContextProvider } from "./contexts/basketContext";
+import { AddressContextProvider } from "./contexts/addressContext";
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme} >
       <BrowserRouter>
         <BasketContextProvider>
-          <Router />
+          <AddressContextProvider>
+            <Router />
+          </AddressContextProvider>
         </BasketContextProvider>
       </BrowserRouter>
       <GlobalStyle />
