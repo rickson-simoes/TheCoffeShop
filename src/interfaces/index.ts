@@ -1,3 +1,5 @@
+import { IFormInformationSchema } from "../pages/Checkout/userValidationSchema";
+
 export interface IProduct {
   id: string;
   name: string;
@@ -26,10 +28,19 @@ export interface IBasketContextType {
   addCoffee: (coffee: ICoffee) => void;
   removeCoffee: (coffee: ICoffee) => void;
   allCoffees: ITotalItemsInBasket[];
-  removeAll: (id: string) => void;
+  removeAllCoffeesFromID: (id: string) => void;
 }
 
 export interface IBasketContextProvider {
+  children: React.ReactNode
+}
+
+export interface IAddressContext {
+  addUserInformation: (userInformation: IFormInformationSchema) => void;
+  userInformation: IFormInformationSchema;
+}
+
+export interface IAddressContextProvider {
   children: React.ReactNode
 }
 
