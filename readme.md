@@ -35,8 +35,8 @@ _A Delivery app from a Coffe Shop, what about order one? or... two? =)_
 
 <h2>📸 App Images</h2>
 
-[![TheCoffeShop](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img1.png "Home")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img1.png "Project Demonstration")
+[![TheCoffeShop](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-1.png "Home")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-1.png "Project Demonstration")
 
-[![TheCoffeShop2](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img2.png "Checkout Cart")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img2.png "Project Demonstration")
+[![TheCoffeShop2](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-2.png "Checkout Cart")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-2.png "Project Demonstration")
 
-[![TheCoffeShop3](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img33.png "Success")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img33.png "Project Demonstration")
+[![TheCoffeShop3](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-3.png "Success")](https://raw.githubusercontent.com/rickson-simoes/TheCoffeShop/master/public/imgs_samples/img-3.png "Project Demonstration")
