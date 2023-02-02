@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useReducer } from "react";
 import { IBasketContextProvider, IBasketContextType, ITotalItemsInBasket, ICoffee } from "../interfaces";
 import { addCoffeeAction, addMoreCoffeeAction, removeCoffeeAction, removeMoreCoffeesAction } from "../reducers/coffees/actions";
 import { CoffeeReducer } from "../reducers/coffees/reducer";
@@ -6,9 +6,7 @@ import { CoffeeReducer } from "../reducers/coffees/reducer";
 export const BasketContext = createContext({} as IBasketContextType);
 
 export function BasketContextProvider({ children }: IBasketContextProvider) {
-
   const [allCoffees, dispatch] = useReducer(CoffeeReducer, [] as ITotalItemsInBasket[]);
-
   const findCoffee = (id: string) => allCoffees.find(coffee => coffee.id == id) ?? false;
 
   function addCoffee(item: ICoffee) {
@@ -34,7 +32,7 @@ export function BasketContextProvider({ children }: IBasketContextProvider) {
       }
   }
 
-  function removeAll(id: string) {
+  function removeAllCoffeesFromID(id: string) {
     const selectedCoffee = findCoffee(id);
 
     if (selectedCoffee)
@@ -43,7 +41,7 @@ export function BasketContextProvider({ children }: IBasketContextProvider) {
 
   return (
     <BasketContext.Provider
-      value={{ addCoffee, removeCoffee, allCoffees, removeAll }}>
+      value={{ addCoffee, removeCoffee, allCoffees, removeAllCoffeesFromID }}>
       {children}
     </BasketContext.Provider>
   )
