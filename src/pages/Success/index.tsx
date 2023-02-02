@@ -3,8 +3,11 @@ import { Container, InformationContent, LinearGradientContainer, OrderInformatio
 import ManBikeRiding from '../../assets/PedidoConfirmado/Ilustracao-homem-moto.svg'
 import { IconRounded } from '../../components/IconRounded';
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
+import { AddressContext } from "../../contexts/addressContext";
+import { useContext } from "react";
 
 export function SuccessPage() {
+  const { userInformation } = useContext(AddressContext);
   return (
     <Container>
       <OrderReceived>
@@ -18,8 +21,8 @@ export function SuccessPage() {
             <div>
               <IconRounded backgroundColor="purple" svg={<MapPin weight="fill" />} />
               <InformationContent>
-                <span> Entrega em <strong>Rua João Daniel Martinelli, 102</strong></span>
-                <span> Farrapos - Porto Alegre, RS</span>
+                <span> Entrega em <strong>Rua {userInformation.rua}, {userInformation.numero}</strong></span>
+                <span> {userInformation.bairro} - {userInformation.cidade}, {userInformation.uf}</span>
               </InformationContent>
             </div>
 
@@ -35,7 +38,7 @@ export function SuccessPage() {
               <IconRounded backgroundColor="yellowDark" svg={<CurrencyDollar weight="fill" />} />
               <InformationContent>
                 <span> Pagamento na entrega </span>
-                <span> <strong>Cartão de crédito</strong></span>
+                <span> <strong>{userInformation.formaPagamento}</strong></span>
               </InformationContent>
             </div>
           </OrderInformation>
