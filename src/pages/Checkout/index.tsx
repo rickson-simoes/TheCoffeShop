@@ -1,50 +1,40 @@
 import { CurrencyDollar, MapPinLine, Trash } from "phosphor-react";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as zod from 'zod';
 
 import { Counter } from "../../components/Counter";
 import { BasketContext } from "../../contexts/basketContext";
 import { ConvertToCurrencyBRL } from "../../Helpers/ConvertToCurrency";
+
 import { Inputs } from "./Components/Inputs";
 import { PaymentOptions } from "./Components/PaymentOptions";
 import { SvgTitleInformation } from "./Components/SvgTitleInformation";
 import { ButtonCheckoutOrder, ButtonRemoval, FormContainer, ItemInformation, ItemMenu, List, OrderCheckout, OrderContainer, TotalFontSizeBigger, TotalOrder } from "./styles";
-
+import { IFormInformationSchema, userInformationValidationSchema } from "./userValidationSchema";
+import { AddressContext } from "../../contexts/addressContext";
 
 
 export function CheckoutPage() {
-  const obrigatoryField = { invalid_type_error: "Campo obrigatório" };
-
-  const userInformationValidationSchema = zod.object({
-    cep: zod.string(obrigatoryField).min(8, 'Cep inválido, Mín: 8 caracteres').max(9, 'Máx: 9 caracteres'),
-    rua: zod.string(obrigatoryField).min(2, 'Min: 2 caracteres').max(50, 'Máx: 50 caracteres'),
-    numero: zod.number(obrigatoryField).min(1, 'Min: 1 caracter'),
-    complemento: zod.string().max(50, 'Max: 50 caracteres'),
-    bairro: zod.string(obrigatoryField).min(2, 'Min: 2 caracteres'),
-    cidade: zod.string(obrigatoryField).min(2, 'Min: 2 caracteres'),
-    uf: zod.string(obrigatoryField).max(2, 'Máx: 2 caracteres'),
-    formaPagamento: zod.enum(["credito", "debito", "dinheiro"], { errorMap: () => ({ message: "Inserir forma de pagamento" }) }),
-  });
-
-  type IFormInformationSchema = zod.infer<typeof userInformationValidationSchema>;
+  const navigate = useNavigate();
+  const { addUserInformation } = useContext(AddressContext);
 
   const FormData = useForm<IFormInformationSchema>({
     resolver: zodResolver(userInformationValidationSchema),
   });
 
-  const { handleSubmit, reset } = FormData
+  const { handleSubmit } = FormData
 
-  const { allCoffees, removeAll } = useContext(BasketContext);
+  const { allCoffees, removeAllCoffeesFromID } = useContext(BasketContext);
 
   const totalItems = allCoffees.reduce((acc, item) => acc + item.price, 0);
   const totalDelivery = 3.50;
   const totalValue = ConvertToCurrencyBRL(totalItems + totalDelivery);
 
   function handleSubmitOrder(data: IFormInformationSchema) {
-    console.log(data);
-    // reset();
+    addUserInformation(data);
+    navigate("/success");
   }
 
   return (
@@ -93,7 +83,7 @@ export function CheckoutPage() {
                     <span>{value.name} <span>({ConvertToCurrencyBRL(value.unitPrice)} Und)</span></span>
                     <div>
                       <Counter {...value} />
-                      <ButtonRemoval type="button" onClick={() => removeAll(value.id)}><Trash /> <span>Remover</span></ButtonRemoval>
+                      <ButtonRemoval type="button" onClick={() => removeAllCoffeesFromID(value.id)}><Trash /> <span>Remover</span></ButtonRemoval>
                     </div>
                   </ItemInformation>
                 </ItemMenu>

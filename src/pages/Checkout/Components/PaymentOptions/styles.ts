@@ -37,3 +37,9 @@ export const LabelPayment = styled.label<ILabelPayment>`
     line-height: 0;
   } 
 `
+
+export const ErrorSpan = styled.span`
+  font-size: 0.7rem;
+  color: #ff5f5f;
+  margin-left: 0.5rem;
+`

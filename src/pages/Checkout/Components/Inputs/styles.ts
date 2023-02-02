@@ -36,6 +36,7 @@ export const OptionalInput = styled.div`
   flex: 1;
   align-items: center;
   border-radius: 6px;
+  place-self: start;
 
   &:focus-within {
     box-shadow: 0 0 0 2px ${props => props.theme.yellow};
@@ -61,11 +62,21 @@ export const RowInputsTwo = styled.div`
   display: flex;
   gap: 1rem;
 
-  input:nth-child(2) {
-    width: 17.25rem;
+  div:nth-child(2) {
+    > input {
+      width: 17.25rem;
+    }
   }
 
-  input:last-child {
-    width: 3.75rem;
+  div:last-child {
+    > input {
+      width: 3.75rem;
+    }
   }
+`
+
+export const ErrorSpan = styled.span`
+  font-size: 0.7rem;
+  color: #ff5f5f;
+  margin-left: 0.5rem;
 `
