@@ -1,53 +1,45 @@
 import { Bank, CreditCard, Money } from "phosphor-react";
-import { ChangeEvent, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { ErrorSpan, LabelPayment, PaymentContainer } from "./styles";
 
 export function PaymentOptions() {
-  const [option, setOption] = useState("");
-  const { register, formState } = useFormContext();
+  const { register, formState: { errors: { formaPagamento } }, watch } = useFormContext();
 
-  const formaPagamentoError = formState.errors.formaPagamento?.message;
-
-  function handleOptionPayment(event: ChangeEvent<HTMLInputElement>) {
-    setOption(event.target.value)
-  }
+  const formaPagamentoError = formaPagamento?.message;
+  const formaPagamentoTipo = watch("formaPagamento");
 
   return (
     <>
       {formaPagamentoError && <p><ErrorSpan>{formaPagamentoError?.toString()}</ErrorSpan></p>}
       <PaymentContainer>
-        <LabelPayment checked={option == "credito"}>
+        <LabelPayment checked={formaPagamentoTipo == 'credito'}>
           <input
             type="radio"
             value="credito"
-            checked={option == "credito"}
             hidden
-            {...register('formaPagamento', { onChange: (e) => handleOptionPayment(e) })}
+            {...register('formaPagamento')}
           />
 
           <CreditCard size={16} /> Cartão de crédito
         </LabelPayment>
 
-        <LabelPayment checked={option == "debito"}>
+        <LabelPayment checked={formaPagamentoTipo == 'debito'}>
           <input
             type="radio"
             value="debito"
-            checked={option == "debito"}
             hidden
-            {...register('formaPagamento', { onChange: (e) => handleOptionPayment(e) })}
+            {...register('formaPagamento')}
           />
 
           <Bank size={16} /> Cartão de débito
         </LabelPayment>
 
-        <LabelPayment checked={option == "dinheiro"}>
+        <LabelPayment checked={formaPagamentoTipo == 'dinheiro'}>
           <input
             type="radio"
             value="dinheiro"
-            checked={option == "dinheiro"}
             hidden
-            {...register('formaPagamento', { onChange: (e) => handleOptionPayment(e) })}
+            {...register('formaPagamento')}
           />
 
           <Money size={16} /> Dinheiro
